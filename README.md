@@ -142,3 +142,131 @@ CPU QVL 的最低 BIOS 需求改變時：
 ## 失敗行為
 
 API 或寄信失敗時, 程式以非零狀態結束, GitHub Actions 會標示失敗。寄信成功後才更新狀態檔, 避免郵件傳送失敗卻遺失該次異動通知。
+
+## API 探索方式
+
+本專案使用的 API 是從 ASUS 官網載入的 JavaScript 與網路請求邏輯分析得知, 並非來自 ASUS 開發者文件。探索流程如下。
+
+### 1. 從轉存網頁確認資料來源
+
+最初取得的網頁轉存包含：
+
+- HTML。
+- ASUS 前端 JavaScript。
+- 頁面載入後產生的 BIOS 資料。
+
+在這些檔案中搜尋：
+
+```text
+productSupportBIOS
+helpdesk_bios
+GetPDBIOS
+ProductV2
+```
+
+接著在 ASUS 壓縮過的 JavaScript 中找到 `getProductSupportBIOS` 呼叫函式。此函式實際呼叫：
+
+```text
+/support/webapi/ProductV2/GetPDBIOS
+```
+
+並傳入以下參數：
+
+```text
+website
+model
+pdid
+m1id
+cpu
+LevelTagId
+```
+
+### 2. 找出產品識別碼來源
+
+BIOS API 需要 `m1Id` 與 `LevelTagId`, 只使用產品名稱不足以取得資料。繼續檢查 JavaScript 後, 找到產品頁初始化時會呼叫：
+
+```text
+https://api-rog.asus.com/recent-data/api/v3/Route
+```
+
+傳入產品頁路徑：
+
+```text
+WebURL=tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/
+```
+
+回應中包含：
+
+```json
+{
+  "websitePath": "tw",
+  "webPathName": "rog-strix-x870e-e-gaming-wifi7-neo",
+  "m1Id": 34707,
+  "levelTagId": 246662
+}
+```
+
+將這些識別資料傳給 `GetPDBIOS`, 即可取得完整的 BIOS JSON。
+
+### 3. 找到 CPU QVL API
+
+同一份 JavaScript 中還有 `getProductSupportCPU` 函式, 它呼叫：
+
+```text
+/support/webapi/ProductV2/GetPDCPUList
+```
+
+所需參數與 BIOS API 接近：
+
+```text
+website
+model
+pdid
+m1id
+mode
+LevelTagId
+```
+
+實際測試後可成功取得 CPU QVL。
+
+### 4. 分析 BIOS 回應分類
+
+測試 Z890 主機板時發現, `GetPDBIOS` 不只回傳 BIOS, 還可能包含：
+
+- BIOS。
+- 韌體。
+- Intel ME。
+
+因此程式依照 API 回傳的 `Name` 分類：
+
+```text
+BIOS     -> bios
+韌體     -> firmware
+Intel ME -> intel_me
+```
+
+這可避免將所有檔案都視為 BIOS。
+
+### 5. 使用實際請求驗證
+
+透過公開的 HTTP GET 請求測試各端點後, 確認：
+
+- 不需要登入。
+- 不需要 API Key。
+- 參數可重現官網資料。
+- JSON 結構與網頁顯示內容一致。
+- AM5 與 Intel Z890 主機板均可使用。
+
+整體方法可概括為：
+
+```text
+觀察官網行為
+-> 搜尋前端 JavaScript
+-> 找到 API 端點
+-> 找出參數來源
+-> 重現 HTTP 請求
+-> 對照網頁資料
+-> 編寫自動化程式
+```
+
+這屬於對公開網站前端行為的技術分析。由於這些端點沒有正式的第三方文件或穩定性承諾, 專案需保留 API 失敗保護與資料結構變更的風險說明。
