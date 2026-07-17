@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Monitor ASUS ROG BIOS and CPU QVL changes."""
+"""Monitor ASUS ROG BIOS, firmware, Intel ME, and CPU QVL changes."""
 
 from __future__ import annotations
 
@@ -25,6 +25,14 @@ import certifi
 ROUTE_API = "https://api-rog.asus.com/recent-data/api/v3/Route"
 SUPPORT_API = "https://rog.asus.com/support/webapi/ProductV2"
 USER_AGENT = "asus-motherboard-monitor/1.0"
+RELEASE_GROUPS = ("bios", "firmware", "intel_me")
+ALL_GROUPS = RELEASE_GROUPS + ("cpu_qvl",)
+GROUP_LABELS = {
+    "bios": "BIOS",
+    "firmware": "PD Firmware / 韌體",
+    "intel_me": "Intel ME",
+    "cpu_qvl": "CPU QVL",
+}
 
 
 class MonitorError(RuntimeError):
@@ -75,29 +83,52 @@ def clean_text(value: Any) -> str:
     return "\n".join(line.strip() for line in text.splitlines() if line.strip()).strip('"')
 
 
-def fetch_bios(product: dict[str, Any]) -> list[dict[str, Any]]:
+def release_group_key(name: Any) -> str | None:
+    normalized = str(name or "").strip().casefold()
+    if normalized == "bios":
+        return "bios"
+    if normalized in {"韌體", "firmware"}:
+        return "firmware"
+    if normalized in {"intel me", "me"}:
+        return "intel_me"
+    return None
+
+
+def normalize_release(item: dict[str, Any], group: str) -> dict[str, Any]:
+    version = str(item.get("Version", "")).strip()
+    title = clean_text(item.get("Title"))
+    download_path = str((item.get("DownloadUrl") or {}).get("Global") or "")
+    identity = version if group == "bios" else f"{title or GROUP_LABELS[group]}|{version}"
+    return {
+        "key": identity,
+        "version": version,
+        "title": title,
+        "release_date": str(item.get("ReleaseDate", "")).strip(),
+        "beta": str(item.get("IsRelease", "")) == "0",
+        "file_size": str(item.get("FileSize", "")).strip(),
+        "description": clean_text(item.get("Description")),
+        "sha256": str(item.get("sha256", "")).strip(),
+        "download_path": download_path,
+    }
+
+
+def fetch_releases(product: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
     params = support_params(product) | {"cpu": ""}
     payload = get_json(f"{SUPPORT_API}/GetPDBIOS", params)
     if payload.get("Status") != "SUCCESS" or not payload.get("Result"):
         raise MonitorError(f"ASUS BIOS lookup failed: {payload.get('Message', 'unknown error')}")
     groups = payload["Result"].get("Obj") or []
-    files = [item for group in groups for item in (group.get("Files") or [])]
-    return sorted(
-        (
-            {
-                "version": str(item.get("Version", "")).strip(),
-                "release_date": str(item.get("ReleaseDate", "")).strip(),
-                "beta": str(item.get("IsRelease", "")) == "0",
-                "file_size": str(item.get("FileSize", "")).strip(),
-                "description": clean_text(item.get("Description")),
-                "sha256": str(item.get("sha256", "")).strip(),
-                "download_path": str((item.get("DownloadUrl") or {}).get("Global") or ""),
-            }
-            for item in files
-        ),
-        key=lambda item: (item["release_date"], item["version"]),
-        reverse=True,
-    )
+    result: dict[str, list[dict[str, Any]]] = {group: [] for group in RELEASE_GROUPS}
+    for api_group in groups:
+        group = release_group_key(api_group.get("Name"))
+        if group is None:
+            continue
+        result[group].extend(normalize_release(item, group) for item in (api_group.get("Files") or []))
+    for group in RELEASE_GROUPS:
+        result[group].sort(
+            key=lambda item: (item["release_date"], item["version"], item["title"]), reverse=True
+        )
+    return result
 
 
 def fetch_cpu_qvl(product: dict[str, Any]) -> list[dict[str, str]]:
@@ -120,21 +151,46 @@ def fetch_cpu_qvl(product: dict[str, Any]) -> list[dict[str, str]]:
     )
 
 
-def make_snapshot(config: dict[str, Any]) -> dict[str, Any]:
-    product = discover_product(config["product_url"])
+def configured_products(config: dict[str, Any]) -> list[dict[str, str]]:
+    if isinstance(config.get("products"), list) and config["products"]:
+        products = config["products"]
+    elif config.get("product_url"):
+        products = [{"product_url": config["product_url"], "socket": ""}]
+    else:
+        raise MonitorError("config.json must contain a non-empty products list")
+    for entry in products:
+        if not isinstance(entry, dict) or not entry.get("product_url"):
+            raise MonitorError("Each configured product must contain product_url")
+    return products
+
+
+def make_product_snapshot(entry: dict[str, str]) -> dict[str, Any]:
+    product = discover_product(entry["product_url"])
+    releases = fetch_releases(product)
     return {
-        "schema_version": 1,
         "product": {
             "name": product.get("brandingName") or product.get("webPathName"),
-            "url": config["product_url"],
+            "socket": str(entry.get("socket", "")).strip(),
+            "url": entry["product_url"],
             "website": product["websitePath"],
             "model": product["webPathName"],
             "m1_id": product["m1Id"],
             "level_tag_id": product["levelTagId"],
         },
-        "bios": fetch_bios(product),
+        **releases,
         "cpu_qvl": fetch_cpu_qvl(product),
     }
+
+
+def make_snapshot(config: dict[str, Any]) -> dict[str, Any]:
+    products: dict[str, dict[str, Any]] = {}
+    for entry in configured_products(config):
+        snapshot = make_product_snapshot(entry)
+        product_id = str(snapshot["product"]["m1_id"])
+        if product_id in products:
+            raise MonitorError(f"Duplicate product in config.json: {snapshot['product']['name']}")
+        products[product_id] = snapshot
+    return {"schema_version": 2, "products": products}
 
 
 def index_by(items: list[dict[str, Any]], key: str) -> dict[str, dict[str, Any]]:
@@ -155,44 +211,89 @@ def diff_items(old: list[dict[str, Any]], new: list[dict[str, Any]], key: str) -
 
 
 def compare(old: dict[str, Any], new: dict[str, Any]) -> dict[str, Any]:
-    return {
-        "bios": diff_items(old.get("bios", []), new.get("bios", []), "version"),
-        "cpu_qvl": diff_items(old.get("cpu_qvl", []), new.get("cpu_qvl", []), "cpu"),
+    changes = {
+        group: diff_items(old.get(group, []), new.get(group, []), "key")
+        for group in RELEASE_GROUPS
     }
+    changes["cpu_qvl"] = diff_items(old.get("cpu_qvl", []), new.get("cpu_qvl", []), "cpu")
+    return changes
 
 
 def has_changes(changes: dict[str, Any]) -> bool:
     return any(changes[group][kind] for group in changes for kind in ("added", "removed", "changed"))
 
 
-def render_summary(snapshot: dict[str, Any], changes: dict[str, Any]) -> str:
+def normalize_old_state(state: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:
+    if state.get("schema_version") == 2 and isinstance(state.get("products"), dict):
+        return state
+    if state.get("schema_version") != 1 or not state.get("product"):
+        return {"schema_version": 2, "products": {}}
+
+    old_product = state["product"]
+    socket = ""
+    for entry in configured_products(config):
+        if product_path(entry["product_url"]) == product_path(old_product.get("url", "")):
+            socket = str(entry.get("socket", ""))
+            break
+    migrated = {
+        "product": old_product | {"socket": socket},
+        "bios": [item | {"key": item.get("key", item.get("version", "")), "title": item.get("title", "")} for item in state.get("bios", [])],
+        "firmware": [],
+        "intel_me": [],
+        "cpu_qvl": state.get("cpu_qvl", []),
+    }
+    return {"schema_version": 2, "products": {str(old_product["m1_id"]): migrated}}
+
+
+def release_detail(item: dict[str, Any], group: str) -> str:
+    prefix = f"{item.get('title')} " if item.get("title") else ""
+    detail = f"{prefix}{item.get('version', '')}".strip()
+    detail += f" ({item.get('release_date', '')}, {'Beta' if item.get('beta') else '正式版'})"
+    return detail
+
+
+def render_summary(snapshot: dict[str, Any], product_changes: dict[str, dict[str, Any]]) -> str:
     lines = [
-        f"ASUS 主機板監控偵測到更新",
-        f"型號: {snapshot['product']['name']}",
+        "ASUS 主機板監控偵測到更新",
         f"時間: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
         "",
     ]
     labels = {"added": "新增", "removed": "移除", "changed": "變更"}
-    for group, title, key in (("bios", "BIOS", "version"), ("cpu_qvl", "CPU QVL", "cpu")):
-        section = changes[group]
-        if not any(section.values()):
-            continue
-        lines.append(f"[{title}]")
-        for kind in ("added", "removed"):
-            for item in section[kind]:
-                detail = item[key]
-                if group == "bios":
-                    detail += f" ({item['release_date']}, {'Beta' if item['beta'] else '正式版'})"
-                else:
-                    detail += f" (BIOS: {item['bios_version'] or '未指定'})"
-                lines.append(f"- {labels[kind]}: {detail}")
-        for item in section["changed"]:
-            lines.append(f"- {labels['changed']}: {item['after'][key]}")
-            for field in sorted(item["after"]):
-                if item["before"].get(field) != item["after"].get(field):
-                    lines.append(f"  {field}: {item['before'].get(field, '')} -> {item['after'].get(field, '')}")
+    for product_id in sorted(product_changes, key=lambda item: snapshot["products"][item]["product"]["name"]):
+        product_snapshot = snapshot["products"][product_id]
+        product = product_snapshot["product"]
+        socket = f"{product.get('socket')} / " if product.get("socket") else ""
+        lines.extend([f"=== {socket}{product['name']} ===", ""])
+        changes = product_changes[product_id]
+        for group in ALL_GROUPS:
+            section = changes[group]
+            if not any(section.values()):
+                continue
+            lines.append(f"[{GROUP_LABELS[group]}]")
+            for kind in ("added", "removed"):
+                for item in section[kind]:
+                    if group == "cpu_qvl":
+                        detail = f"{item['cpu']} (BIOS: {item['bios_version'] or '未指定'})"
+                    else:
+                        detail = release_detail(item, group)
+                    lines.append(f"- {labels[kind]}: {detail}")
+                    if kind == "added" and group in RELEASE_GROUPS and item.get("description"):
+                        lines.extend(f"  {line}" for line in item["description"].splitlines())
+                    if kind == "added" and group in RELEASE_GROUPS and item.get("download_path"):
+                        lines.append(f"  下載: https://dlcdnets.asus.com{item['download_path']}")
+            for item in section["changed"]:
+                identity = item["after"].get("cpu") or release_detail(item["after"], group)
+                lines.append(f"- {labels['changed']}: {identity}")
+                for field in sorted(item["after"]):
+                    if field == "key":
+                        continue
+                    if item["before"].get(field) != item["after"].get(field):
+                        lines.append(
+                            f"  {field}: {item['before'].get(field, '')} -> {item['after'].get(field, '')}"
+                        )
+            lines.append("")
+        lines.append(f"產品頁: {product['url']}")
         lines.append("")
-    lines.append(f"產品頁: {snapshot['product']['url']}")
     return "\n".join(lines)
 
 
@@ -283,24 +384,65 @@ def main() -> int:
             return 0
 
         config = load_json(args.config)
-        old = load_json(args.state, default={})
+        raw_old = load_json(args.state, default={})
+        old = normalize_old_state(raw_old, config)
         new = make_snapshot(config)
-        if not old.get("schema_version"):
-            print(f"Initialized baseline: {len(new['bios'])} BIOS, {len(new['cpu_qvl'])} CPUs")
+
+        # Schema migrations and newly added products establish a baseline without
+        # reporting every historical release as a new update.
+        if raw_old.get("schema_version") != 2:
+            totals = {
+                group: sum(len(product[group]) for product in new["products"].values())
+                for group in ALL_GROUPS
+            }
+            print(
+                "Initialized multi-product baseline: "
+                f"{len(new['products'])} products, {totals['bios']} BIOS, "
+                f"{totals['firmware']} firmware, {totals['intel_me']} Intel ME, "
+                f"{totals['cpu_qvl']} CPUs"
+            )
             if not args.dry_run:
                 args.state.parent.mkdir(parents=True, exist_ok=True)
                 args.state.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             return 0
 
-        changes = compare(old, new)
-        if not has_changes(changes):
-            print("No changes detected.")
+        old_ids = set(old["products"])
+        new_ids = set(new["products"])
+        added_ids = new_ids - old_ids
+        removed_ids = old_ids - new_ids
+        product_changes = {
+            product_id: compare(old["products"][product_id], new["products"][product_id])
+            for product_id in old_ids & new_ids
+        }
+        product_changes = {
+            product_id: changes
+            for product_id, changes in product_changes.items()
+            if has_changes(changes)
+        }
+
+        if not product_changes:
+            if added_ids or removed_ids:
+                print(
+                    f"Updated configured-product baseline: +{len(added_ids)} / -{len(removed_ids)} products."
+                )
+                if not args.dry_run:
+                    args.state.parent.mkdir(parents=True, exist_ok=True)
+                    args.state.write_text(
+                        json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+                    )
+            else:
+                print("No changes detected.")
             return 0
 
-        summary = render_summary(new, changes)
+        summary = render_summary(new, product_changes)
         print(summary)
         if not args.dry_run:
-            send_email(f"[ASUS 更新] {new['product']['name']}", summary, SmtpConfig.from_env())
+            if len(product_changes) == 1:
+                only_id = next(iter(product_changes))
+                subject_target = new["products"][only_id]["product"]["name"]
+            else:
+                subject_target = f"{len(product_changes)} 張主機板"
+            send_email(f"[ASUS 更新] {subject_target}", summary, SmtpConfig.from_env())
             args.state.parent.mkdir(parents=True, exist_ok=True)
             args.state.write_text(json.dumps(new, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return 0

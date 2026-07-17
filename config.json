@@ -1,3 +1,14 @@
 {
-  "product_url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/"
+  "products": [
+    {
+      "name": "ROG STRIX X870E-E GAMING WIFI7 NEO",
+      "socket": "AM5",
+      "product_url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/"
+    },
+    {
+      "name": "ROG STRIX Z890-A GAMING WIFI",
+      "socket": "LGA1851",
+      "product_url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/"
+    }
+  ]
 }

@@ -1,8 +1,11 @@
 # ASUS 主機板更新追蹤
 
-定期查詢 ASUS ROG 公開 API, 追蹤指定主機板的 BIOS 與 CPU QVL。資料與前一次保存在 `data/state.json` 的結果比較, 有異動時透過 SMTP 寄送摘要郵件。
+定期查詢 ASUS ROG 公開 API, 同時追蹤多張主機板的 BIOS、PD Firmware、Intel ME 與 CPU QVL。資料與前一次保存在 `data/state.json` 的結果比較, 有異動時透過 SMTP 寄送摘要郵件。
 
-目前監控型號為 `ROG STRIX X870E-E GAMING WIFI7 NEO`。
+目前監控型號：
+
+- AM5：`ROG STRIX X870E-E GAMING WIFI7 NEO`。
+- LGA1851：`ROG STRIX Z890-A GAMING WIFI`。
 
 ## 執行方式
 
@@ -59,13 +62,18 @@ python monitor.py --test-email
 
 ## 變更偵測與郵件觸發條件
 
-BIOS 與 CPU QVL 是兩個獨立的比較項目。任何一項發生變化都會寄送郵件；如果兩者在同一次執行中同時變化, 只會寄送一封郵件, 並在信中分別顯示 `[BIOS]` 與 `[CPU QVL]` 區段。
+每張主機板的 BIOS、PD Firmware、Intel ME 與 CPU QVL 都是獨立比較項目。任何機種或分類發生變化都會寄送郵件；如果多個項目在同一次執行中同時變化, 只會寄送一封郵件, 並按照 Socket、主機板型號及資料分類顯示摘要。
 
 BIOS 的觸發條件：
 
 - 新增 BIOS 版本。
 - 移除既有 BIOS 版本。
 - 相同版本的發布日期、正式版或 Beta 狀態、檔案大小、更新說明、SHA-256 或下載路徑改變。
+
+PD Firmware 與 Intel ME 的觸發條件：
+
+- 新增或移除版本。
+- 相同工具與版本的發布日期、檔案大小、更新說明、SHA-256 或下載路徑改變。
 
 CPU QVL 的觸發條件：
 
@@ -108,9 +116,28 @@ CPU QVL 的最低 BIOS 需求改變時：
 
 目前新增 BIOS 的摘要會列出版本、日期與正式版或 Beta 狀態。相同版本的欄位被 ASUS 修改時, 郵件會列出變更前後的內容。
 
-## 更換主機板
+## 新增或更換主機板
 
-修改 `config.json` 中的 ASUS ROG 產品或支援頁網址即可。腳本會透過路由 API 自動取得 `m1Id` 與 `levelTagId`, 不需手動填寫產品識別碼。
+在 `config.json` 的 `products` 陣列新增 ASUS ROG 產品或支援頁網址：
+
+```json
+{
+  "products": [
+    {
+      "name": "ROG STRIX X870E-E GAMING WIFI7 NEO",
+      "socket": "AM5",
+      "product_url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/"
+    },
+    {
+      "name": "ROG STRIX Z890-A GAMING WIFI",
+      "socket": "LGA1851",
+      "product_url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/"
+    }
+  ]
+}
+```
+
+腳本會透過路由 API 自動取得每個產品的 `m1Id` 與 `levelTagId`, 不需手動填寫產品識別碼。新增機種後第一次執行只會建立該機種基準, 不會把既有的歷史版本當成更新寄信。移除設定中的機種也只會更新基準, 不會誤報為 ASUS 移除全部資料。
 
 ## 失敗行為
 

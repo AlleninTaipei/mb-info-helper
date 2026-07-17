@@ -2,7 +2,15 @@ import unittest
 from unittest.mock import patch
 
 import monitor
-from monitor import SmtpConfig, compare, has_changes, product_path, render_summary
+from monitor import (
+    SmtpConfig,
+    compare,
+    has_changes,
+    normalize_old_state,
+    product_path,
+    release_group_key,
+    render_summary,
+)
 
 
 class MonitorTests(unittest.TestCase):
@@ -12,26 +20,122 @@ class MonitorTests(unittest.TestCase):
 
     def test_detects_add_remove_and_change(self):
         old = {
-            "bios": [{"version": "100", "description": "old"}],
+            "bios": [{"key": "100", "version": "100", "description": "old"}],
+            "firmware": [{"key": "PD|1.0", "version": "1.0"}],
+            "intel_me": [{"key": "ME|1.0", "version": "1.0"}],
             "cpu_qvl": [{"cpu": "CPU A", "bios_version": "all"}, {"cpu": "CPU B"}],
         }
         new = {
-            "bios": [{"version": "100", "description": "new"}, {"version": "200"}],
+            "bios": [
+                {"key": "100", "version": "100", "description": "new"},
+                {"key": "200", "version": "200"},
+            ],
+            "firmware": [
+                {"key": "PD|1.0", "version": "1.0"},
+                {"key": "PD|2.0", "version": "2.0"},
+            ],
+            "intel_me": [{"key": "ME|2.0", "version": "2.0"}],
             "cpu_qvl": [{"cpu": "CPU A", "bios_version": "100"}],
         }
         changes = compare(old, new)
         self.assertEqual(changes["bios"]["added"][0]["version"], "200")
         self.assertEqual(changes["bios"]["changed"][0]["after"]["description"], "new")
         self.assertEqual(changes["cpu_qvl"]["removed"][0]["cpu"], "CPU B")
+        self.assertEqual(changes["firmware"]["added"][0]["version"], "2.0")
+        self.assertEqual(changes["intel_me"]["added"][0]["version"], "2.0")
         self.assertTrue(has_changes(changes))
 
     def test_summary_contains_items(self):
-        snapshot = {"product": {"name": "Board", "url": "https://example.com"}}
-        changes = {
-            "bios": {"added": [{"version": "1002", "release_date": "2026/07/15", "beta": True}], "removed": [], "changed": []},
-            "cpu_qvl": {"added": [], "removed": [], "changed": []},
+        empty = {"added": [], "removed": [], "changed": []}
+        snapshot = {
+            "products": {
+                "1": {
+                    "product": {
+                        "name": "Board",
+                        "socket": "AM5",
+                        "url": "https://example.com",
+                    }
+                }
+            }
         }
-        self.assertIn("1002", render_summary(snapshot, changes))
+        changes = {"1": {
+            "bios": {
+                "added": [{
+                    "key": "1002",
+                    "version": "1002",
+                    "title": "",
+                    "release_date": "2026/07/15",
+                    "beta": True,
+                    "description": "Memory update",
+                    "download_path": "/bios.zip",
+                }],
+                "removed": [],
+                "changed": [],
+            },
+            "firmware": {
+                "added": [{
+                    "key": "PD Firmware|1.29",
+                    "version": "1.29",
+                    "title": "PD Firmware",
+                    "release_date": "2026/07/15",
+                    "beta": False,
+                    "description": "PD update",
+                    "download_path": "/pd.zip",
+                }],
+                "removed": [],
+                "changed": [],
+            },
+            "intel_me": {
+                "added": [{
+                    "key": "MEUpdateTool|19.0",
+                    "version": "19.0",
+                    "title": "MEUpdateTool",
+                    "release_date": "2026/07/15",
+                    "beta": False,
+                    "description": "ME update",
+                    "download_path": "/me.zip",
+                }],
+                "removed": [],
+                "changed": [],
+            },
+            "cpu_qvl": empty,
+        }}
+        summary = render_summary(snapshot, changes)
+        self.assertIn("1002", summary)
+        self.assertIn("Memory update", summary)
+        self.assertIn("https://dlcdnets.asus.com/bios.zip", summary)
+        self.assertIn("[PD Firmware / 韌體]", summary)
+        self.assertIn("PD Firmware 1.29", summary)
+        self.assertIn("[Intel ME]", summary)
+        self.assertIn("MEUpdateTool 19.0", summary)
+
+    def test_asus_release_group_mapping(self):
+        self.assertEqual(release_group_key("BIOS"), "bios")
+        self.assertEqual(release_group_key("韌體"), "firmware")
+        self.assertEqual(release_group_key("Intel ME"), "intel_me")
+        self.assertIsNone(release_group_key("Unknown"))
+
+    def test_v1_state_migration(self):
+        config = {
+            "products": [{
+                "socket": "AM5",
+                "product_url": "https://rog.asus.com/tw/motherboards/rog-strix/board/",
+            }]
+        }
+        old = {
+            "schema_version": 1,
+            "product": {
+                "name": "Board",
+                "url": "https://rog.asus.com/tw/motherboards/rog-strix/board/",
+                "m1_id": 123,
+            },
+            "bios": [{"version": "1002"}],
+            "cpu_qvl": [],
+        }
+        migrated = normalize_old_state(old, config)
+        self.assertEqual(migrated["schema_version"], 2)
+        self.assertEqual(migrated["products"]["123"]["product"]["socket"], "AM5")
+        self.assertEqual(migrated["products"]["123"]["bios"][0]["key"], "1002")
 
     @patch("monitor.send_email")
     @patch("monitor.SmtpConfig.from_env")

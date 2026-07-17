@@ -1,372 +1,846 @@
 {
-  "schema_version": 1,
-  "product": {
-    "name": "ROG STRIX X870E-E GAMING WIFI7 NEO",
-    "url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/",
-    "website": "tw",
-    "model": "rog-strix-x870e-e-gaming-wifi7-neo",
-    "m1_id": 34707,
-    "level_tag_id": 246662
-  },
-  "bios": [
-    {
-      "version": "1002",
-      "release_date": "2026/07/15",
-      "beta": true,
-      "file_size": "39.36 MB",
-      "description": "1. Enhanced memory performance, system stability, and compatibility with CXMT memory chips.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
-      "sha256": "F55DAD4C4D08731217276FEF5C44E391DA2785894B826F0C26EB6AA032C7DEAD",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1002.ZIP"
+  "schema_version": 2,
+  "products": {
+    "34707": {
+      "product": {
+        "name": "ROG STRIX X870E-E GAMING WIFI7 NEO",
+        "socket": "AM5",
+        "url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/",
+        "website": "tw",
+        "model": "rog-strix-x870e-e-gaming-wifi7-neo",
+        "m1_id": 34707,
+        "level_tag_id": 246662
+      },
+      "bios": [
+        {
+          "key": "1002",
+          "version": "1002",
+          "title": "",
+          "release_date": "2026/07/15",
+          "beta": true,
+          "file_size": "39.36 MB",
+          "description": "1. Enhanced memory performance, system stability, and compatibility with CXMT memory chips.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+          "sha256": "F55DAD4C4D08731217276FEF5C44E391DA2785894B826F0C26EB6AA032C7DEAD",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1002.ZIP"
+        },
+        {
+          "key": "1001",
+          "version": "1001",
+          "title": "",
+          "release_date": "2026/06/26",
+          "beta": true,
+          "file_size": "39.35 MB",
+          "description": "1.Updated AGESA ComboAM5 PI 1.3.0.1b Patch A to support the GNR Transparent Secure Memory Encryption (TSME) feature.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+          "sha256": "6662A419C2531C3DD941C3FB455A1298ED52B0A75B421E6E84A9BF52F18980C8",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1001.ZIP"
+        },
+        {
+          "key": "0916",
+          "version": "0916",
+          "title": "",
+          "release_date": "2026/06/17",
+          "beta": false,
+          "file_size": "39.36 MB",
+          "description": "1.Update AGESA ComboAM5 PI 1.3.0.1b.\n2.Add support for EXPO ULL memory profiles.\n3.Enhance Asynchronous Clock and BCLK compatibility.\n4.Optimize ECC-UDIMM memory performance.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+          "sha256": "FE3C7BE71909CAD9A2C5B7103EF2C42E107F18FE2DB0E61594CA178415BBF662",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0916.ZIP"
+        },
+        {
+          "key": "0901",
+          "version": "0901",
+          "title": "",
+          "release_date": "2026/04/27",
+          "beta": true,
+          "file_size": "39.28 MB",
+          "description": "1.New memory profile support.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+          "sha256": "9604A00AAA4DEAC46C010061071B1C4BC5437A2E67B2EA4C763F3F781CE6EA00",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0901.ZIP"
+        },
+        {
+          "key": "0804",
+          "version": "0804",
+          "title": "",
+          "release_date": "2026/04/15",
+          "beta": false,
+          "file_size": "39.28 MB",
+          "description": "1.Update AGESA ComboAM5 PI 1.3.0.1.\n2.Improve compatibility and performance for Ryzen 9 9950X3D2 Dual Edition processors.\n3.Add new Crosshair Tweak items for advanced performance tuning (available on select models).\nNote: This BIOS version cannot be rolled back to previous versions.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.\"\nStarting from AGESA ComboAM5 PI 1.3.0.0, ECC-UDIMM memory speed will be limited to 5200 MT/s when paired with 9000 series CPUs.",
+          "sha256": "FF66C6EBDE6FB48FE6015C3CBD4AD10ABFE1C88140DDF09DF1B189F950C3D07D",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0804.ZIP"
+        },
+        {
+          "key": "0703",
+          "version": "0703",
+          "title": "",
+          "release_date": "2026/04/01",
+          "beta": false,
+          "file_size": "39.29 MB",
+          "description": "1.AGESA updated to ComboAM5 PI 1.3.0.0a.\n2.Provide additional stability margin during high-frequency DDR5 training.\n3.Addresses potential boot failures and stability issues observed on certain Ryzen 9000 configurations.\n4.Resolves an issue where systems might unexpectedly prompt for a BitLocker recovery key during startup.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.\"\nStarting from AGESA ComboAM5 PI 1.3.0.0, ECC-UDIMM memory speed will be limited to 5200 MT/s when paired with 9000 series CPUs.",
+          "sha256": "1CDBBBDA515350F0DCEBB7B5ADBFBC920079A7D075FD3A8E9813B1962BB2A160",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0703.ZIP"
+        },
+        {
+          "key": "0238",
+          "version": "0238",
+          "title": "",
+          "release_date": "2026/02/25",
+          "beta": false,
+          "file_size": "39.28 MB",
+          "description": "First release",
+          "sha256": "1716597748AD8F718B2BE8B0EB76E77064C47848F08102D1195A0376E7B61B3B",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0238.ZIP"
+        }
+      ],
+      "firmware": [],
+      "intel_me": [],
+      "cpu_qvl": [
+        {
+          "cpu": "Ryzen 3 8300G (3.45GHz, 65W, 8MB, 4, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 3 8300GE (3.5GHz, 35W, 8MB, 4, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 3 PRO 8300G (3.45GHz, 65W, 8MB, 4, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 3 PRO 8300GE (3.5GHz, 35W, 8MB, 4, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 7400F (3.7GHz, 65W, 32MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 7500F (3.7GHz, 65W, 32MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 7500X3D (4.0GHz, 65W, 96MB, 6, )",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 7600 (3.8GHz, 65W, 32MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 7600X (4.7GHz, 105W, 32MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 7600X3D (4.1GHz, 65W, 96MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 8400F (4.2GHz, 65W, 16MB, 6, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 8500G (3.55GHz, 65W, 16MB, 6, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 8500GE (3.4GHz, 35W, 16MB, 6, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 8600G (4.35GHz, 65W, 16MB, 6, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 9500F (3.8GHz, 65W, 32MB, 6, B1)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 9600 (3.8GHz, 65W, 32MB, 6, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 9600X (3.9GHz, 65W, 32MB, 6, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 PRO 7645 (3.8GHz, 65W, 32MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 PRO 8500G (3.55GHz, 65W, 16MB, 6, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 PRO 8500GE (3.4GHz, 35W, 16MB, 6, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 PRO 8600G (4.35GHz, 65W, 16MB, 6, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 PRO 8600GE (3.9GHz, 35W, 16MB, 6, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 5 PRO 9645 (3.9GHz, 65W, 32MB, 6, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 7700 (3.8GHz, 65W, 32MB, 8, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 7700X (4.5GHz, 105W, 32MB, 8, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 7700X3D (4.0GHz, 120W, 96MB, 8, )",
+          "pcb_version": "all",
+          "bios_version": "0916",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 7800X3D (4.2GHz, 120W, 96MB, 8, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 8700F (4.1GHz, 65W, 16MB, 8, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 8700G (4.2GHz, 65W, 16MB, 8, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 9700F (3.8GHz, 65W, 32MB, 8, B1)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 9700X (3.8GHz, 65W, 32MB, 8, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 9800X3D (4.7GHz, 120W, 96MB, 8, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 9850X3D (4.7GHz, 120W, 96MB, 8, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 PRO 7745 (3.8GHz, 65W, 32MB, 8, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 PRO 8700G (4.2GHz, 65W, 16MB, 8, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 PRO 8700GE (3.65GHz, 35W, 16MB, 8, A2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 7 PRO 9745 (3.8GHz, 65W, 32MB, 8, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 7900 (3.7GHz, 65W, 64MB, 12, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 7900X (4.7GHz, 170W, 64MB, 12, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 7900X3D (4.4GHz, 120W, 128MB, 12, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 7950X (4.5GHz, 170W, 64MB, 16, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 7950X3D (4.2GHz, 120W, 128MB, 16, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 9900X (4.4GHz, 120W, 64MB, 12, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 9900X3D (4.4GHz, 120W, 128MB, 12, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 9950X (4.3GHz, 170W, 64MB, 16, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 9950X3D (4.3GHz, 170W, 128MB, 16, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 9950X3D2 (4.3GHz, 200W, 192MB, 16, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 PRO 7945 (3.7GHz, 65W, 64MB, 12, B2)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Ryzen 9 PRO 9945 (3.4GHz, 65W, 64MB, 12, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        }
+      ]
     },
-    {
-      "version": "1001",
-      "release_date": "2026/06/26",
-      "beta": true,
-      "file_size": "39.35 MB",
-      "description": "1.Updated AGESA ComboAM5 PI 1.3.0.1b Patch A to support the GNR Transparent Secure Memory Encryption (TSME) feature.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
-      "sha256": "6662A419C2531C3DD941C3FB455A1298ED52B0A75B421E6E84A9BF52F18980C8",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1001.ZIP"
-    },
-    {
-      "version": "0916",
-      "release_date": "2026/06/17",
-      "beta": false,
-      "file_size": "39.36 MB",
-      "description": "1.Update AGESA ComboAM5 PI 1.3.0.1b.\n2.Add support for EXPO ULL memory profiles.\n3.Enhance Asynchronous Clock and BCLK compatibility.\n4.Optimize ECC-UDIMM memory performance.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
-      "sha256": "FE3C7BE71909CAD9A2C5B7103EF2C42E107F18FE2DB0E61594CA178415BBF662",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0916.ZIP"
-    },
-    {
-      "version": "0901",
-      "release_date": "2026/04/27",
-      "beta": true,
-      "file_size": "39.28 MB",
-      "description": "1.New memory profile support.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
-      "sha256": "9604A00AAA4DEAC46C010061071B1C4BC5437A2E67B2EA4C763F3F781CE6EA00",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0901.ZIP"
-    },
-    {
-      "version": "0804",
-      "release_date": "2026/04/15",
-      "beta": false,
-      "file_size": "39.28 MB",
-      "description": "1.Update AGESA ComboAM5 PI 1.3.0.1.\n2.Improve compatibility and performance for Ryzen 9 9950X3D2 Dual Edition processors.\n3.Add new Crosshair Tweak items for advanced performance tuning (available on select models).\nNote: This BIOS version cannot be rolled back to previous versions.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.\"\nStarting from AGESA ComboAM5 PI 1.3.0.0, ECC-UDIMM memory speed will be limited to 5200 MT/s when paired with 9000 series CPUs.",
-      "sha256": "FF66C6EBDE6FB48FE6015C3CBD4AD10ABFE1C88140DDF09DF1B189F950C3D07D",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0804.ZIP"
-    },
-    {
-      "version": "0703",
-      "release_date": "2026/04/01",
-      "beta": false,
-      "file_size": "39.29 MB",
-      "description": "1.AGESA updated to ComboAM5 PI 1.3.0.0a.\n2.Provide additional stability margin during high-frequency DDR5 training.\n3.Addresses potential boot failures and stability issues observed on certain Ryzen 9000 configurations.\n4.Resolves an issue where systems might unexpectedly prompt for a BitLocker recovery key during startup.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.\"\nStarting from AGESA ComboAM5 PI 1.3.0.0, ECC-UDIMM memory speed will be limited to 5200 MT/s when paired with 9000 series CPUs.",
-      "sha256": "1CDBBBDA515350F0DCEBB7B5ADBFBC920079A7D075FD3A8E9813B1962BB2A160",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0703.ZIP"
-    },
-    {
-      "version": "0238",
-      "release_date": "2026/02/25",
-      "beta": false,
-      "file_size": "39.28 MB",
-      "description": "First release",
-      "sha256": "1716597748AD8F718B2BE8B0EB76E77064C47848F08102D1195A0376E7B61B3B",
-      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0238.ZIP"
+    "29682": {
+      "product": {
+        "name": "ROG STRIX Z890-A GAMING WIFI",
+        "socket": "LGA1851",
+        "url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-z890-a-gaming-wifi/",
+        "website": "tw",
+        "model": "rog-strix-z890-a-gaming-wifi",
+        "m1_id": 29682,
+        "level_tag_id": 233095
+      },
+      "bios": [
+        {
+          "key": "3202",
+          "version": "3202",
+          "title": "",
+          "release_date": "2026/05/08",
+          "beta": false,
+          "file_size": "15.73 MB",
+          "description": "1.Enhanced system security and added support for HUDIMM.\n2.Improved overall system performance and stability.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.2175v0.3.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "16D54A83549D6AD888B36E55509F0E1C90F31BB9C4332DF802B7C9C01386D910",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-3202.ZIP"
+        },
+        {
+          "key": "3103",
+          "version": "3103",
+          "title": "",
+          "release_date": "2026/04/02",
+          "beta": false,
+          "file_size": "15.73 MB",
+          "description": "1.Improved system performance\n2.Silicon Initialization Code updated to 0D.00.0A.30\n3.Updated Management Engine (ME) to version 19.0.5.2175v0.3\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version 19.0.5.2175v0.3.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "976E65875CDA71C11AF2E272422FA09175511D00916F4F613B577FCFCE0B996C",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-3103.ZIP"
+        },
+        {
+          "key": "3002",
+          "version": "3002",
+          "title": "",
+          "release_date": "2026/01/30",
+          "beta": false,
+          "file_size": "15.73 MB",
+          "description": "1.Support for future Intel® Core™ Ultra series processors.\n2.Update AMI BIOS Codebase to version 5.32_9AACA_RC0D.00.05.10(6011.00)_213.\n3.Update Intel® ME firmware to version 19.0.5.2175v0.2 for enhanced platform stability.\n4.Update CPU Microcode to m_82_c0662_00000121 to improve processor performance and security.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.2175v0.2.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "1A8234686E54F17DF964B53B140DDBE10C6614B2D6C11DD7EF2CBD4545EC0159",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-3002.ZIP"
+        },
+        {
+          "key": "2302",
+          "version": "2302",
+          "title": "",
+          "release_date": "2025/12/15",
+          "beta": false,
+          "file_size": "15.59 MB",
+          "description": "1. Enhance overall system security.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1992v2.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "EE0C1298A8CC27113B16930F2D1092809782401A454D6BC63E6D5AF8F2E9512A",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-2302.ZIP"
+        },
+        {
+          "key": "2201",
+          "version": "2201",
+          "title": "",
+          "release_date": "2025/09/26",
+          "beta": false,
+          "file_size": "15.59 MB",
+          "description": "1. Update the Intel microcode to version 0x11a.\n2. Enhanced system performance and device compatibility.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1992v2.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "C518A2694A02B72505E16FC19ACD10DE8E391CE0ED303674615758E9F8D7D218",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-2201.ZIP"
+        },
+        {
+          "key": "2006",
+          "version": "2006",
+          "title": "",
+          "release_date": "2025/07/29",
+          "beta": false,
+          "file_size": "15.58 MB",
+          "description": "1.Improved system performance, stability, and device compatibility.\n2.Updated Management Engine (ME) to version 19.0.5.1992.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1992v2.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "4ED59C22AC611FFBAE4DEE680A451BE610ADFEA49FFC0898630F6D1FD8C1029B",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-2006.ZIP"
+        },
+        {
+          "key": "1901",
+          "version": "1901",
+          "title": "",
+          "release_date": "2025/05/09",
+          "beta": false,
+          "file_size": "15.54 MB",
+          "description": "1.Update Management Engine (ME) to version 19.0.5.1984.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1984.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "96CCC7D7400C7A47CD460632DD81A2AE3442836645F0FC0E240F0BC3EC47E847",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1901.ZIP"
+        },
+        {
+          "key": "1801",
+          "version": "1801",
+          "title": "",
+          "release_date": "2025/04/22",
+          "beta": false,
+          "file_size": "15.54 MB",
+          "description": " 1.Added support for Intel 200S Boost.\n2.Enhanced system performance.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1948.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "ED0D1AEE68D562373EEE8D5E1E7103BAF205002D6CF8104F1C25775F5AD494D7",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1801.ZIP"
+        },
+        {
+          "key": "1703",
+          "version": "1703",
+          "title": "",
+          "release_date": "2025/04/15",
+          "beta": false,
+          "file_size": "15.53 MB",
+          "description": "1. Included DIMM Fit Pro\n2. Improved system performance\n3. Updated Re-timer NVM to version 06.26.05 and firmware to version 59.2 for Thunderbolt 4 and Thunderbolt 5 compatible models\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1948.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "6AEAF14B19318F629A31D5A450632FC02C37B42CC4264394A89C02DD0D531368",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1703.ZIP"
+        },
+        {
+          "key": "1603",
+          "version": "1603",
+          "title": "",
+          "release_date": "2025/03/25",
+          "beta": false,
+          "file_size": "15.43 MB",
+          "description": "1.Microcode updated to 0x117.\n2.Intel® CSME updated to 19.0.5.1948.\n3.Silicon Initialization Code updated to 0D.00.D8.30 (M.R.C: 2.10.0.0).\n4.Included DLRM Setting for Storage to reduce active power usage in D3. Enabling this option will reduce the transfer speed of storage devices when they are under no load and resume the original speed when they are under load again.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.5.1948.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "7162F9626AECB6D7EE46727738C1B0FA5A77E988F804DB4860924EE04369B825",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1603.ZIP"
+        },
+        {
+          "key": "1501",
+          "version": "1501",
+          "title": "",
+          "release_date": "2025/02/11",
+          "beta": false,
+          "file_size": "15.46 MB",
+          "description": "This BIOS enhances system performance and improves high-capacity memory compatibility. This includes support for 2*DIMM memory configurations, achieving speeds up to 7000MT/s with AEMP III enabled.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.0.1854v2.2. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "CF2BDC8C4D4A84014C29E7D1F13D3B7E9E9FFB8E32E4F07FB66E8E8A6E7C3E78",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1501.ZIP"
+        },
+        {
+          "key": "1401",
+          "version": "1401",
+          "title": "",
+          "release_date": "2025/01/10",
+          "beta": false,
+          "file_size": "15.46 MB",
+          "description": "Support up to 5600MT/s when running the maximum memory capacity of 256GB. The exclusive \"\"AEMP III\"\" option will appear when four Kingston RAM DDR5 6400MT/s 64GB CUDIMMs are installed.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.0.1854v2.2. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "0C16B37632EA3A38674508BC4131588EB1DBEE82DF5D4089539927306E1CE318",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1401.ZIP"
+        },
+        {
+          "key": "1302",
+          "version": "1302",
+          "title": "",
+          "release_date": "2024/12/31",
+          "beta": false,
+          "file_size": "15.47 MB",
+          "description": "1. Silicon Initialization Code updated to v0D.00.CC.50 (M.R.C:1.4.6.81).\n2. Add SA - PCI Express / L1 Substates item to support CPU PCI Express Link Power Management.\n3. Includes IDI Data Transfer Mode for integrated graphics, enhancing flexibility in handling various data sizes.\n4. ME FW updated to v19.0.0.1854v2.2.\n5. Update Thunderbolt 4.0 Retimer FW to v6.24.02 for compatible models.\n6. Improve system performance and enhance gaming performance for select games (improvements may vary by game).\n7. Add Resource Priority Feature item.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.0.1854v2.2. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "19752171E15A1824EB51D71E0694829CFB6EBBB5722D0FAF448A67D88E0383D8",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1302.ZIP"
+        },
+        {
+          "key": "1203",
+          "version": "1203",
+          "title": "",
+          "release_date": "2024/12/18",
+          "beta": false,
+          "file_size": "15.45 MB",
+          "description": "1.Intel microcode updated to 0x114..\n2.M.R.C updated to v1.4.6.64.\n3.ME FW updated to v19.0.0.1827.\n4.GOP updated to v1057.\n5.RST VMD updated to v20.1.0.5850.\n6.Improved memory compatibility and stability for frequencies >6000MHz; added CUDIMM Dual PLL mode.\n7.Enabled Wi-Fi 7 (320MHz) and Wi-Fi 6E (6GHz) support for multiple countries.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version v19.0.0.1827. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1203.ZIP"
+        },
+        {
+          "key": "1101",
+          "version": "1101",
+          "title": "",
+          "release_date": "2024/11/29",
+          "beta": false,
+          "file_size": "15.63 MB",
+          "description": "1.Intel microcode updated to 0x113.\n2.Enhance system stability and compatibility.\n3.Enable EPP Grouping by default, further improving gaming performance in OS balanced mode.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version 19.0.0.1753v4. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1101.ZIP"
+        },
+        {
+          "key": "1002",
+          "version": "1002",
+          "title": "",
+          "release_date": "2024/11/15",
+          "beta": false,
+          "file_size": "15.63 MB",
+          "description": "1.Changed defaults: Intel(R) Innovation Platform Framework and VT-d to ‘Enabled’. Ensure the corresponding IPF or DTT drivers are also installed to ensure system stability.\n2.Updated to microcode 0x112 and added ‘Microcode Options’ to allow users to select the preferred microcode settings based on their needs.\n3.Improved memory compatibility and stability.\n4.Enable support for WiFi 6GHz band with up to 320MHz bandwidth in Japan.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version 19.0.0.1753v4. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-1002.ZIP"
+        },
+        {
+          "key": "0806",
+          "version": "0806",
+          "title": "",
+          "release_date": "2024/10/23",
+          "beta": false,
+          "file_size": "15.66 MB",
+          "description": "1.Include Intel microcode (m_82_c0662_00000110) update\n2.Update ME to 19.0.0.1753v4 hot fix\n3.Enabled ASUS AI Advisor support\n4.Fixed compatibility issue with high-capacity DIMMs\n5.Resolved iGPU and dGPU conflict issue\n6.Updated EZ Flash with file format filter\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version 19.0.0.1753v4. The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-0806.ZIP"
+        },
+        {
+          "key": "0503",
+          "version": "0503",
+          "title": "",
+          "release_date": "2024/09/04",
+          "beta": false,
+          "file_size": "12.68 MB",
+          "description": "First Release",
+          "sha256": "",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-0503.zip"
+        }
+      ],
+      "firmware": [
+        {
+          "key": "PD Firmware Update Tool|1.29",
+          "version": "1.29",
+          "title": "PD Firmware Update Tool",
+          "release_date": "2025/07/21",
+          "beta": false,
+          "file_size": "8.44 MB",
+          "description": "Patch Corsair monitor recognition issue.",
+          "sha256": "94BAA0C06AD8C9E96CAE59714314696980A3341DCB7F245B756FEF823BCD71AC",
+          "download_path": "/pub/ASUS/mb/LGA1851/ROG_STRIX_Z890-E_GAMING_WIFI/ITBT4_PD_FW_update_tool_v1.29.zip"
+        },
+        {
+          "key": "PD Firmware Update Tool|1.26",
+          "version": "1.26",
+          "title": "PD Firmware Update Tool",
+          "release_date": "2025/02/12",
+          "beta": false,
+          "file_size": "8.44 MB",
+          "description": "Patch addressing the G3-S5 device recognition issue.",
+          "sha256": "B931857A71CE574EE6AF7B26667017B55083E44A711FCFE98AE011369CA60231",
+          "download_path": "/pub/ASUS/mb/LGA1851/FW/ITBT4_PD_FW_update_tool_v1.26.zip"
+        }
+      ],
+      "intel_me": [
+        {
+          "key": "MEUpdateTool|19.0.5.2175v0.3",
+          "version": "19.0.5.2175v0.3",
+          "title": "MEUpdateTool",
+          "release_date": "2026/04/02",
+          "beta": false,
+          "file_size": "3.31 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.5.2175v0.3 simultaneously.",
+          "sha256": "F1974160F62AA015273A7492D2ED51C3F1CDFD48A6CDC8FBD4BEA4DD89959782",
+          "download_path": "/pub/ASUS/mb/MEUpdateTool/MEUpdateTool_19.0.5.2175v0.3_T.7z"
+        },
+        {
+          "key": "MEUpdateTool|19.0.5.2175v0.2",
+          "version": "19.0.5.2175v0.2",
+          "title": "MEUpdateTool",
+          "release_date": "2026/01/30",
+          "beta": false,
+          "file_size": "3.78 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.5.2175v0.2 simultaneously.",
+          "sha256": "2276605DC9B9C8FF2F5B0B7DF1E2585CF8EAC5313F1565477B34D53059D94FEA",
+          "download_path": "/pub/ASUS/mb/MEUpdateTool/MEUpdateTool_19.0.5.2175v0.2_T.zip"
+        },
+        {
+          "key": "MEUpdateTool|19.0.5.1992V2",
+          "version": "19.0.5.1992V2",
+          "title": "MEUpdateTool",
+          "release_date": "2025/07/25",
+          "beta": false,
+          "file_size": "3.72 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.5.1992V2 simultaneously.",
+          "sha256": "227BCBF7AE07B7D41A486611646B2DB118338BCE349E58A343B7BD37F9157FBF",
+          "download_path": "/pub/ASUS/mb/MEUpdateTool/MEUpdateTool_19.0.5.1992V2_T.zip"
+        },
+        {
+          "key": "MEUpdateTool|19.0.5.1984",
+          "version": "19.0.5.1984",
+          "title": "MEUpdateTool",
+          "release_date": "2025/05/05",
+          "beta": false,
+          "file_size": "3.72 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.5.1984 simultaneously.",
+          "sha256": "2BBCDF8E9D46760F548DC14AACF613E7BC7882C9C1CD8DDA0F2E6B7A8E0604E6",
+          "download_path": "/pub/ASUS/mb/MEUpdateTool/MEUpdateTool_19.0.5.1984_T.zip"
+        },
+        {
+          "key": "MEUpdateTool|19.0.5.1948",
+          "version": "19.0.5.1948",
+          "title": "MEUpdateTool",
+          "release_date": "2025/03/20",
+          "beta": false,
+          "file_size": "3.72 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.5.1948 simultaneously.",
+          "sha256": "26382B066D2DAA4F5DF85142953C7A5B8473A5A21B44879BDE499618DFE134C7",
+          "download_path": "/pub/ASUS/mb/MEUpdateTool/MEUpdateTool_19.0.5.1948_T.zip"
+        },
+        {
+          "key": "MEUpdateTool|19.0.0.1854v2.2",
+          "version": "19.0.0.1854v2.2",
+          "title": "MEUpdateTool",
+          "release_date": "2024/12/31",
+          "beta": false,
+          "file_size": "3.7 MB",
+          "description": "Please download the file and check the SHA256 code first.\nIntel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.0.1854v2.2  simultaneously.",
+          "sha256": "677BA644DBEBF142BF754D6873BD959F89FB32D2DA538925C38995BC38B1F010",
+          "download_path": "/pub/ASUS/mb/LGA1851/ROG_MAXIMUS_Z890_EXTREME/MEUpdateTool_19.0.0.1854v2.2_T.zip"
+        },
+        {
+          "key": "MEUpdateTool|19.0.0.1827",
+          "version": "19.0.0.1827",
+          "title": "MEUpdateTool",
+          "release_date": "2024/12/26",
+          "beta": false,
+          "file_size": "3.69 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.0.1827  simultaneously.\nPlease download the file and check the MD5 code first.\nMD5: 3793c3c3ebb0709c18f865ef64b3e930",
+          "sha256": "849CCC2D64EFCB764E5B3ACC383150D6CB96E9EA3111216060DB7765DBF62839",
+          "download_path": "/pub/ASUS/mb/LGA1851/ROG_MAXIMUS_Z890_EXTREME/MEUpdateTool_19.0.0.1827_T.zip"
+        },
+        {
+          "key": "MEUpdateTool|19.0.0.1753V4",
+          "version": "19.0.0.1753V4",
+          "title": "MEUpdateTool",
+          "release_date": "2024/10/23",
+          "beta": false,
+          "file_size": "3.26 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.0.1753V4  simultaneously.\nPlease download the file and check the MD5 code first.\nMD5: a1c2d87d01a430fe74f97a0df0eda608",
+          "sha256": "",
+          "download_path": "/pub/ASUS/mb/LGA1851/ROG_MAXIMUS_Z890_EXTREME/MEUpdateTool_19.0.0.1753V4_T.7z"
+        }
+      ],
+      "cpu_qvl": [
+        {
+          "cpu": "Core Ultra 5-225 (3.3GHz, 65W, 20MB, 10, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-225F (3.3GHz, 65W, 20MB, 10, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-225T (2.5GHz, 35W, 20MB, 10, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-230F (3.4GHz, 64W, 24MB, 10, A0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-235 (3.4GHz, 65W, 24MB, 14, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-235T (2.2GHz, 35W, 24MB, 14, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-245 (3.5GHz, 65W, 24MB, 14, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-245K (4.2GHz, 125W, 24MB, 14, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-245KF (4.2GHz, 125W, 24MB, 14, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-245T (2.2GHz, 35W, 24MB, 14, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-250K Plus (4.2GHz, 125W, 30MB, 18, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 5-250KF Plus (4.2GHz, 125W, 30MB, 18, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 7-265 (2.4GHz, 65W, 30MB, 20, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 7-265F (2.4GHz, 65W, 30MB, 20, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 7-265K (3.9GHz, 125W, 30MB, 20, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 7-265KF (3.9GHz, 125W, 30MB, 20, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 7-265T (1.5GHz, 35W, 30MB, 20, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 7-270K Plus (3.7GHz, 125W, 36MB, 24, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 9-285 (2.5GHz, 65W, 36MB, 24, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 9-285K (3.7GHz, 125W, 36MB, 24, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        },
+        {
+          "cpu": "Core Ultra 9-285T (1.4GHz, 35W, 36MB, 24, B0)",
+          "pcb_version": "all",
+          "bios_version": "all",
+          "memo": ""
+        }
+      ]
     }
-  ],
-  "cpu_qvl": [
-    {
-      "cpu": "Ryzen 3 8300G (3.45GHz, 65W, 8MB, 4, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 3 8300GE (3.5GHz, 35W, 8MB, 4, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 3 PRO 8300G (3.45GHz, 65W, 8MB, 4, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 3 PRO 8300GE (3.5GHz, 35W, 8MB, 4, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 7400F (3.7GHz, 65W, 32MB, 6, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 7500F (3.7GHz, 65W, 32MB, 6, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 7500X3D (4.0GHz, 65W, 96MB, 6, )",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 7600 (3.8GHz, 65W, 32MB, 6, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 7600X (4.7GHz, 105W, 32MB, 6, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 7600X3D (4.1GHz, 65W, 96MB, 6, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 8400F (4.2GHz, 65W, 16MB, 6, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 8500G (3.55GHz, 65W, 16MB, 6, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 8500GE (3.4GHz, 35W, 16MB, 6, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 8600G (4.35GHz, 65W, 16MB, 6, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 9500F (3.8GHz, 65W, 32MB, 6, B1)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 9600 (3.8GHz, 65W, 32MB, 6, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 9600X (3.9GHz, 65W, 32MB, 6, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 PRO 7645 (3.8GHz, 65W, 32MB, 6, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 PRO 8500G (3.55GHz, 65W, 16MB, 6, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 PRO 8500GE (3.4GHz, 35W, 16MB, 6, A0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 PRO 8600G (4.35GHz, 65W, 16MB, 6, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 PRO 8600GE (3.9GHz, 35W, 16MB, 6, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 5 PRO 9645 (3.9GHz, 65W, 32MB, 6, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 7700 (3.8GHz, 65W, 32MB, 8, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 7700X (4.5GHz, 105W, 32MB, 8, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 7700X3D (4.0GHz, 120W, 96MB, 8, )",
-      "pcb_version": "all",
-      "bios_version": "0916",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 7800X3D (4.2GHz, 120W, 96MB, 8, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 8700F (4.1GHz, 65W, 16MB, 8, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 8700G (4.2GHz, 65W, 16MB, 8, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 9700F (3.8GHz, 65W, 32MB, 8, B1)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 9700X (3.8GHz, 65W, 32MB, 8, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 9800X3D (4.7GHz, 120W, 96MB, 8, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 9850X3D (4.7GHz, 120W, 96MB, 8, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 PRO 7745 (3.8GHz, 65W, 32MB, 8, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 PRO 8700G (4.2GHz, 65W, 16MB, 8, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 PRO 8700GE (3.65GHz, 35W, 16MB, 8, A2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 7 PRO 9745 (3.8GHz, 65W, 32MB, 8, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 7900 (3.7GHz, 65W, 64MB, 12, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 7900X (4.7GHz, 170W, 64MB, 12, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 7900X3D (4.4GHz, 120W, 128MB, 12, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 7950X (4.5GHz, 170W, 64MB, 16, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 7950X3D (4.2GHz, 120W, 128MB, 16, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 9900X (4.4GHz, 120W, 64MB, 12, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 9900X3D (4.4GHz, 120W, 128MB, 12, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 9950X (4.3GHz, 170W, 64MB, 16, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 9950X3D (4.3GHz, 170W, 128MB, 16, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 9950X3D2 (4.3GHz, 200W, 192MB, 16, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 PRO 7945 (3.7GHz, 65W, 64MB, 12, B2)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    },
-    {
-      "cpu": "Ryzen 9 PRO 9945 (3.4GHz, 65W, 64MB, 12, B0)",
-      "pcb_version": "all",
-      "bios_version": "all",
-      "memo": ""
-    }
-  ]
+  }
 }
