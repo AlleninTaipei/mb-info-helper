@@ -41,7 +41,7 @@ Workflow 預設每天在 UTC `01:17` 與 `13:17` 執行, 即台北時間 `09:17`
 
 ### 驗證 SMTP 寄信
 
-Secrets 設定完成後：
+SMTP 測試郵件功能已整合至 GitHub Actions 的手動執行介面。Secrets 設定完成後：
 
 1. 開啟 repository 的 `Actions`。
 2. 選擇 `Monitor ASUS motherboard updates`。
@@ -56,6 +56,57 @@ Secrets 設定完成後：
 ```bash
 python monitor.py --test-email
 ```
+
+## 變更偵測與郵件觸發條件
+
+BIOS 與 CPU QVL 是兩個獨立的比較項目。任何一項發生變化都會寄送郵件；如果兩者在同一次執行中同時變化, 只會寄送一封郵件, 並在信中分別顯示 `[BIOS]` 與 `[CPU QVL]` 區段。
+
+BIOS 的觸發條件：
+
+- 新增 BIOS 版本。
+- 移除既有 BIOS 版本。
+- 相同版本的發布日期、正式版或 Beta 狀態、檔案大小、更新說明、SHA-256 或下載路徑改變。
+
+CPU QVL 的觸發條件：
+
+- 新增 CPU。
+- 移除既有 CPU。
+- 相同 CPU 的 PCB 版本、最低 BIOS 需求或備註改變。
+
+沒有任何變化時, workflow 只會顯示：
+
+```text
+No changes detected.
+```
+
+此時不會連線 SMTP、不會寄信, 也不會修改 `data/state.json`。
+
+### 郵件摘要範例
+
+新增 BIOS 時：
+
+```text
+主旨: [ASUS 更新] ROG STRIX X870E-E GAMING WIFI7 NEO
+
+ASUS 主機板監控偵測到更新
+型號: ROG STRIX X870E-E GAMING WIFI7 NEO
+時間: 2026-07-18 01:17 UTC
+
+[BIOS]
+- 新增: 1003 (2026/07/18, 正式版)
+
+產品頁: https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/
+```
+
+CPU QVL 的最低 BIOS 需求改變時：
+
+```text
+[CPU QVL]
+- 變更: Ryzen 7 7700X3D (...)
+  bios_version: 0916 -> 1003
+```
+
+目前新增 BIOS 的摘要會列出版本、日期與正式版或 Beta 狀態。相同版本的欄位被 ASUS 修改時, 郵件會列出變更前後的內容。
 
 ## 更換主機板
 
