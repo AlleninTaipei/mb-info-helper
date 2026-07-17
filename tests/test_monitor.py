@@ -1,6 +1,8 @@
 import unittest
+from unittest.mock import patch
 
-from monitor import compare, has_changes, product_path, render_summary
+import monitor
+from monitor import SmtpConfig, compare, has_changes, product_path, render_summary
 
 
 class MonitorTests(unittest.TestCase):
@@ -30,6 +32,25 @@ class MonitorTests(unittest.TestCase):
             "cpu_qvl": {"added": [], "removed": [], "changed": []},
         }
         self.assertIn("1002", render_summary(snapshot, changes))
+
+    @patch("monitor.send_email")
+    @patch("monitor.SmtpConfig.from_env")
+    def test_email_mode_does_not_query_asus(self, from_env, send_email):
+        from_env.return_value = SmtpConfig(
+            host="smtp.example.com",
+            port=587,
+            username="sender@example.com",
+            password="secret",
+            sender="sender@example.com",
+            recipient="recipient@example.com",
+            starttls=True,
+        )
+        with patch("monitor.make_snapshot") as make_snapshot, patch(
+            "sys.argv", ["monitor.py", "--test-email"]
+        ):
+            self.assertEqual(monitor.main(), 0)
+        send_email.assert_called_once()
+        make_snapshot.assert_not_called()
 
 
 if __name__ == "__main__":

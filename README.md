@@ -39,6 +39,24 @@ python monitor.py
 
 Workflow 預設每天在 UTC `01:17` 與 `13:17` 執行, 即台北時間 `09:17` 與 `21:17`。也能在 Actions 頁面使用 `Run workflow` 手動執行。
 
+### 驗證 SMTP 寄信
+
+Secrets 設定完成後：
+
+1. 開啟 repository 的 `Actions`。
+2. 選擇 `Monitor ASUS motherboard updates`。
+3. 點選 `Run workflow`。
+4. 勾選 `Send a test email without changing state`。
+5. 再點選綠色的 `Run workflow`。
+
+成功時, `Check ASUS updates` 步驟會顯示 `Test email sent to ...`, 收件信箱會收到主旨為 `[ASUS 監控] SMTP 測試成功` 的郵件。測試模式不查詢 ASUS API, 也不修改 `data/state.json`。若未收到郵件, 請一併檢查公司信箱的垃圾郵件匣。
+
+本機也可以使用相同的環境變數執行：
+
+```bash
+python monitor.py --test-email
+```
+
 ## 更換主機板
 
 修改 `config.json` 中的 ASUS ROG 產品或支援頁網址即可。腳本會透過路由 API 自動取得 `m1Id` 與 `levelTagId`, 不需手動填寫產品識別碼。

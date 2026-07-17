@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "17 1,13 * * *"
   workflow_dispatch:
+    inputs:
+      send_test_email:
+        description: "Send a test email without changing state"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -37,7 +43,12 @@ jobs:
           SMTP_STARTTLS: ${{ secrets.SMTP_STARTTLS }}
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
-        run: python monitor.py
+        run: |
+          if [[ "${{ inputs.send_test_email }}" == "true" ]]; then
+            python monitor.py --test-email
+          else
+            python monitor.py
+          fi
 
       - name: Commit updated state
         run: |

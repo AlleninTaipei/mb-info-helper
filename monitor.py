@@ -229,17 +229,20 @@ def send_email(subject: str, body: str, smtp_config: SmtpConfig) -> None:
     message["From"] = smtp_config.sender
     message["To"] = smtp_config.recipient
     message.set_content(body)
-    if smtp_config.starttls:
-        with smtplib.SMTP(smtp_config.host, smtp_config.port, timeout=30) as server:
-            server.starttls(context=ssl.create_default_context())
-            server.login(smtp_config.username, smtp_config.password)
-            server.send_message(message)
-    else:
-        with smtplib.SMTP_SSL(
-            smtp_config.host, smtp_config.port, timeout=30, context=ssl.create_default_context()
-        ) as server:
-            server.login(smtp_config.username, smtp_config.password)
-            server.send_message(message)
+    try:
+        if smtp_config.starttls:
+            with smtplib.SMTP(smtp_config.host, smtp_config.port, timeout=30) as server:
+                server.starttls(context=ssl.create_default_context())
+                server.login(smtp_config.username, smtp_config.password)
+                server.send_message(message)
+        else:
+            with smtplib.SMTP_SSL(
+                smtp_config.host, smtp_config.port, timeout=30, context=ssl.create_default_context()
+            ) as server:
+                server.login(smtp_config.username, smtp_config.password)
+                server.send_message(message)
+    except (OSError, smtplib.SMTPException) as exc:
+        raise MonitorError(f"Email delivery failed: {exc}") from exc
 
 
 def load_json(path: Path, default: dict[str, Any] | None = None) -> dict[str, Any]:
@@ -258,9 +261,27 @@ def main() -> int:
     parser.add_argument("--config", type=Path, default=Path("config.json"))
     parser.add_argument("--state", type=Path, default=Path("data/state.json"))
     parser.add_argument("--dry-run", action="store_true", help="Do not send email or update state")
+    parser.add_argument(
+        "--test-email",
+        action="store_true",
+        help="Send a test email without querying ASUS or updating state",
+    )
     args = parser.parse_args()
 
     try:
+        if args.test_email:
+            smtp_config = SmtpConfig.from_env()
+            now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+            send_email(
+                "[ASUS 監控] SMTP 測試成功",
+                "ASUS 主機板更新追蹤的 SMTP 設定可正常寄信。\n\n"
+                f"測試時間: {now}\n"
+                "此測試不會查詢 ASUS API, 也不會修改 state.json。",
+                smtp_config,
+            )
+            print(f"Test email sent to {smtp_config.recipient}.")
+            return 0
+
         config = load_json(args.config)
         old = load_json(args.state, default={})
         new = make_snapshot(config)
