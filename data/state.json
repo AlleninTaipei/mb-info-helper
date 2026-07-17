@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "product": {
+    "name": "ROG STRIX X870E-E GAMING WIFI7 NEO",
+    "url": "https://rog.asus.com/tw/motherboards/rog-strix/rog-strix-x870e-e-gaming-wifi7-neo/",
+    "website": "tw",
+    "model": "rog-strix-x870e-e-gaming-wifi7-neo",
+    "m1_id": 34707,
+    "level_tag_id": 246662
+  },
+  "bios": [
+    {
+      "version": "1002",
+      "release_date": "2026/07/15",
+      "beta": true,
+      "file_size": "39.36 MB",
+      "description": "1. Enhanced memory performance, system stability, and compatibility with CXMT memory chips.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+      "sha256": "F55DAD4C4D08731217276FEF5C44E391DA2785894B826F0C26EB6AA032C7DEAD",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1002.ZIP"
+    },
+    {
+      "version": "1001",
+      "release_date": "2026/06/26",
+      "beta": true,
+      "file_size": "39.35 MB",
+      "description": "1.Updated AGESA ComboAM5 PI 1.3.0.1b Patch A to support the GNR Transparent Secure Memory Encryption (TSME) feature.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+      "sha256": "6662A419C2531C3DD941C3FB455A1298ED52B0A75B421E6E84A9BF52F18980C8",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1001.ZIP"
+    },
+    {
+      "version": "0916",
+      "release_date": "2026/06/17",
+      "beta": false,
+      "file_size": "39.36 MB",
+      "description": "1.Update AGESA ComboAM5 PI 1.3.0.1b.\n2.Add support for EXPO ULL memory profiles.\n3.Enhance Asynchronous Clock and BCLK compatibility.\n4.Optimize ECC-UDIMM memory performance.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+      "sha256": "FE3C7BE71909CAD9A2C5B7103EF2C42E107F18FE2DB0E61594CA178415BBF662",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0916.ZIP"
+    },
+    {
+      "version": "0901",
+      "release_date": "2026/04/27",
+      "beta": true,
+      "file_size": "39.28 MB",
+      "description": "1.New memory profile support.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+      "sha256": "9604A00AAA4DEAC46C010061071B1C4BC5437A2E67B2EA4C763F3F781CE6EA00",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0901.ZIP"
+    },
+    {
+      "version": "0804",
+      "release_date": "2026/04/15",
+      "beta": false,
+      "file_size": "39.28 MB",
+      "description": "1.Update AGESA ComboAM5 PI 1.3.0.1.\n2.Improve compatibility and performance for Ryzen 9 9950X3D2 Dual Edition processors.\n3.Add new Crosshair Tweak items for advanced performance tuning (available on select models).\nNote: This BIOS version cannot be rolled back to previous versions.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.\"\nStarting from AGESA ComboAM5 PI 1.3.0.0, ECC-UDIMM memory speed will be limited to 5200 MT/s when paired with 9000 series CPUs.",
+      "sha256": "FF66C6EBDE6FB48FE6015C3CBD4AD10ABFE1C88140DDF09DF1B189F950C3D07D",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0804.ZIP"
+    },
+    {
+      "version": "0703",
+      "release_date": "2026/04/01",
+      "beta": false,
+      "file_size": "39.29 MB",
+      "description": "1.AGESA updated to ComboAM5 PI 1.3.0.0a.\n2.Provide additional stability margin during high-frequency DDR5 training.\n3.Addresses potential boot failures and stability issues observed on certain Ryzen 9000 configurations.\n4.Resolves an issue where systems might unexpectedly prompt for a BitLocker recovery key during startup.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.\"\nStarting from AGESA ComboAM5 PI 1.3.0.0, ECC-UDIMM memory speed will be limited to 5200 MT/s when paired with 9000 series CPUs.",
+      "sha256": "1CDBBBDA515350F0DCEBB7B5ADBFBC920079A7D075FD3A8E9813B1962BB2A160",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0703.ZIP"
+    },
+    {
+      "version": "0238",
+      "release_date": "2026/02/25",
+      "beta": false,
+      "file_size": "39.28 MB",
+      "description": "First release",
+      "sha256": "1716597748AD8F718B2BE8B0EB76E77064C47848F08102D1195A0376E7B61B3B",
+      "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-0238.ZIP"
+    }
+  ],
+  "cpu_qvl": [
+    {
+      "cpu": "Ryzen 3 8300G (3.45GHz, 65W, 8MB, 4, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 3 8300GE (3.5GHz, 35W, 8MB, 4, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 3 PRO 8300G (3.45GHz, 65W, 8MB, 4, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 3 PRO 8300GE (3.5GHz, 35W, 8MB, 4, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 7400F (3.7GHz, 65W, 32MB, 6, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 7500F (3.7GHz, 65W, 32MB, 6, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 7500X3D (4.0GHz, 65W, 96MB, 6, )",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 7600 (3.8GHz, 65W, 32MB, 6, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 7600X (4.7GHz, 105W, 32MB, 6, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 7600X3D (4.1GHz, 65W, 96MB, 6, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 8400F (4.2GHz, 65W, 16MB, 6, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 8500G (3.55GHz, 65W, 16MB, 6, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 8500GE (3.4GHz, 35W, 16MB, 6, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 8600G (4.35GHz, 65W, 16MB, 6, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 9500F (3.8GHz, 65W, 32MB, 6, B1)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 9600 (3.8GHz, 65W, 32MB, 6, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 9600X (3.9GHz, 65W, 32MB, 6, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 PRO 7645 (3.8GHz, 65W, 32MB, 6, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 PRO 8500G (3.55GHz, 65W, 16MB, 6, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 PRO 8500GE (3.4GHz, 35W, 16MB, 6, A0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 PRO 8600G (4.35GHz, 65W, 16MB, 6, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 PRO 8600GE (3.9GHz, 35W, 16MB, 6, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 5 PRO 9645 (3.9GHz, 65W, 32MB, 6, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 7700 (3.8GHz, 65W, 32MB, 8, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 7700X (4.5GHz, 105W, 32MB, 8, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 7700X3D (4.0GHz, 120W, 96MB, 8, )",
+      "pcb_version": "all",
+      "bios_version": "0916",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 7800X3D (4.2GHz, 120W, 96MB, 8, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 8700F (4.1GHz, 65W, 16MB, 8, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 8700G (4.2GHz, 65W, 16MB, 8, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 9700F (3.8GHz, 65W, 32MB, 8, B1)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 9700X (3.8GHz, 65W, 32MB, 8, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 9800X3D (4.7GHz, 120W, 96MB, 8, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 9850X3D (4.7GHz, 120W, 96MB, 8, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 PRO 7745 (3.8GHz, 65W, 32MB, 8, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 PRO 8700G (4.2GHz, 65W, 16MB, 8, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 PRO 8700GE (3.65GHz, 35W, 16MB, 8, A2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 7 PRO 9745 (3.8GHz, 65W, 32MB, 8, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 7900 (3.7GHz, 65W, 64MB, 12, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 7900X (4.7GHz, 170W, 64MB, 12, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 7900X3D (4.4GHz, 120W, 128MB, 12, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 7950X (4.5GHz, 170W, 64MB, 16, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 7950X3D (4.2GHz, 120W, 128MB, 16, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 9900X (4.4GHz, 120W, 64MB, 12, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 9900X3D (4.4GHz, 120W, 128MB, 12, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 9950X (4.3GHz, 170W, 64MB, 16, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 9950X3D (4.3GHz, 170W, 128MB, 16, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 9950X3D2 (4.3GHz, 200W, 192MB, 16, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 PRO 7945 (3.7GHz, 65W, 64MB, 12, B2)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    },
+    {
+      "cpu": "Ryzen 9 PRO 9945 (3.4GHz, 65W, 64MB, 12, B0)",
+      "pcb_version": "all",
+      "bios_version": "all",
+      "memo": ""
+    }
+  ]
+}
