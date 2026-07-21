@@ -2,7 +2,7 @@ name: Monitor ASUS motherboard updates
 
 on:
   schedule:
-    - cron: "17 13 * * 1-5"
+    - cron: "17 13 * * 0-5"
   workflow_dispatch:
     inputs:
       send_test_email:
