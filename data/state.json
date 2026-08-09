@@ -401,6 +401,17 @@
       },
       "bios": [
         {
+          "key": "3305",
+          "version": "3305",
+          "title": "",
+          "release_date": "2026/08/07",
+          "beta": false,
+          "file_size": "15.73 MB",
+          "description": "1. Updated ME to version 19.0.11.2289 and Pure ME file to 19.0.11.2289v0.4.\n2. Enhanced HUDIMM compatibility.\n3. Optimized overall system performance.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version 19.0.11.2289v0.4.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "FBEB5308353222321B8D189052689E53FEE4BFA7EE86037600A3795CA040EA38",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-3305.ZIP"
+        },
+        {
           "key": "3202",
           "version": "3202",
           "title": "",
@@ -624,6 +635,17 @@
         }
       ],
       "intel_me": [
+        {
+          "key": "MEUpdateTool|19.0.11.2289v0.4",
+          "version": "19.0.11.2289v0.4",
+          "title": "MEUpdateTool",
+          "release_date": "2026/08/07",
+          "beta": false,
+          "file_size": "3.31 MB",
+          "description": "Intel has identified security issue that could potentially place impacted platform at risk.\nUse ME Update tool to update your ME.\n*We suggest you update ME Driver to the latest Version 19.0.11.2289v0.4 simultaneously.",
+          "sha256": "2CA812D3FDA1E8CAD234BC5CD6E0E21E355119974C74D0E37DF59D990576DE55",
+          "download_path": "/pub/ASUS/mb/MEUpdateTool/MEUpdateTool_19.0.11.2289v0.4_T.7z"
+        },
         {
           "key": "MEUpdateTool|19.0.5.2175v0.3",
           "version": "19.0.5.2175v0.3",
