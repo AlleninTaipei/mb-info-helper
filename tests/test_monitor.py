@@ -1,10 +1,14 @@
+import json
 import unittest
+from urllib.error import HTTPError, URLError
 from unittest.mock import patch
 
 import monitor
 from monitor import (
+    MonitorError,
     SmtpConfig,
     compare,
+    get_json,
     has_changes,
     normalize_old_state,
     product_path,
@@ -13,7 +17,59 @@ from monitor import (
 )
 
 
+class FakeResponse:
+    def __init__(self, payload):
+        self._body = json.dumps(payload).encode("utf-8")
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc_info):
+        return False
+
+    def read(self):
+        return self._body
+
+
+def make_http_error(code):
+    return HTTPError(url="https://example.com", code=code, msg="error", hdrs=None, fp=None)
+
+
 class MonitorTests(unittest.TestCase):
+    @patch("monitor.time.sleep")
+    @patch("monitor.urlopen")
+    def test_get_json_retries_on_transient_http_error(self, mock_urlopen, mock_sleep):
+        mock_urlopen.side_effect = [make_http_error(504), FakeResponse({"ok": True})]
+        result = get_json("https://example.com/api", {})
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(mock_urlopen.call_count, 2)
+        mock_sleep.assert_called_once()
+
+    @patch("monitor.time.sleep")
+    @patch("monitor.urlopen")
+    def test_get_json_raises_after_exhausting_retries(self, mock_urlopen, mock_sleep):
+        mock_urlopen.side_effect = make_http_error(504)
+        with self.assertRaises(MonitorError):
+            get_json("https://example.com/api", {})
+        self.assertEqual(mock_urlopen.call_count, monitor.MAX_RETRIES + 1)
+
+    @patch("monitor.time.sleep")
+    @patch("monitor.urlopen")
+    def test_get_json_does_not_retry_on_client_error(self, mock_urlopen, mock_sleep):
+        mock_urlopen.side_effect = make_http_error(404)
+        with self.assertRaises(MonitorError):
+            get_json("https://example.com/api", {})
+        self.assertEqual(mock_urlopen.call_count, 1)
+        mock_sleep.assert_not_called()
+
+    @patch("monitor.time.sleep")
+    @patch("monitor.urlopen")
+    def test_get_json_retries_on_url_error(self, mock_urlopen, mock_sleep):
+        mock_urlopen.side_effect = [URLError("timed out"), FakeResponse({"ok": True})]
+        result = get_json("https://example.com/api", {})
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(mock_urlopen.call_count, 2)
+
     def test_product_path_removes_support_suffix(self):
         url = "https://rog.asus.com/tw/motherboards/rog-strix/model/helpdesk_bios/"
         self.assertEqual(product_path(url), "tw/motherboards/rog-strix/model/")

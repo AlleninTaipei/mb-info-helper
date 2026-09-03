@@ -11,11 +11,13 @@ import re
 import smtplib
 import ssl
 import sys
+import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.message import EmailMessage
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
 
@@ -39,14 +41,31 @@ class MonitorError(RuntimeError):
     pass
 
 
+RETRYABLE_HTTP_STATUSES = {429, 500, 502, 503, 504}
+MAX_RETRIES = 3
+RETRY_BACKOFF_SECONDS = 2.0
+
+
 def get_json(url: str, params: dict[str, str]) -> dict[str, Any]:
     request = Request(f"{url}?{urlencode(params)}", headers={"User-Agent": USER_AGENT})
-    try:
-        context = ssl.create_default_context(cafile=certifi.where())
-        with urlopen(request, timeout=30, context=context) as response:
-            return json.load(response)
-    except Exception as exc:
-        raise MonitorError(f"API request failed: {url}: {exc}") from exc
+    context = ssl.create_default_context(cafile=certifi.where())
+    last_exc: Exception | None = None
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            with urlopen(request, timeout=30, context=context) as response:
+                return json.load(response)
+        except HTTPError as exc:
+            last_exc = exc
+            if exc.code not in RETRYABLE_HTTP_STATUSES or attempt == MAX_RETRIES:
+                raise MonitorError(f"API request failed: {url}: {exc}") from exc
+        except URLError as exc:
+            last_exc = exc
+            if attempt == MAX_RETRIES:
+                raise MonitorError(f"API request failed: {url}: {exc}") from exc
+        except Exception as exc:
+            raise MonitorError(f"API request failed: {url}: {exc}") from exc
+        time.sleep(RETRY_BACKOFF_SECONDS * (2**attempt))
+    raise MonitorError(f"API request failed: {url}: {last_exc}") from last_exc
 
 
 def product_path(product_url: str) -> str:
