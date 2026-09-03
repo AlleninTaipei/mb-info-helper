@@ -70,6 +70,16 @@ class MonitorTests(unittest.TestCase):
         self.assertEqual(result, {"ok": True})
         self.assertEqual(mock_urlopen.call_count, 2)
 
+    @patch("monitor.time.sleep")
+    @patch("monitor.urlopen")
+    def test_get_json_retries_on_read_timeout(self, mock_urlopen, mock_sleep):
+        # urlopen() succeeds but reading the response body blocks past the
+        # socket timeout, raising TimeoutError (not a URLError subclass).
+        mock_urlopen.side_effect = [TimeoutError("The read operation timed out"), FakeResponse({"ok": True})]
+        result = get_json("https://example.com/api", {})
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(mock_urlopen.call_count, 2)
+
     def test_product_path_removes_support_suffix(self):
         url = "https://rog.asus.com/tw/motherboards/rog-strix/model/helpdesk_bios/"
         self.assertEqual(product_path(url), "tw/motherboards/rog-strix/model/")

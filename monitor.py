@@ -58,7 +58,7 @@ def get_json(url: str, params: dict[str, str]) -> dict[str, Any]:
             last_exc = exc
             if exc.code not in RETRYABLE_HTTP_STATUSES or attempt == MAX_RETRIES:
                 raise MonitorError(f"API request failed: {url}: {exc}") from exc
-        except URLError as exc:
+        except (URLError, TimeoutError) as exc:
             last_exc = exc
             if attempt == MAX_RETRIES:
                 raise MonitorError(f"API request failed: {url}: {exc}") from exc
