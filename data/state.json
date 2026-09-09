@@ -124,6 +124,12 @@
           "memo": ""
         },
         {
+          "cpu": "Ryzen 5 7500 (3.7GHz, 65W, 32MB, 6, B2)",
+          "pcb_version": "all",
+          "bios_version": "1002",
+          "memo": ""
+        },
+        {
           "cpu": "Ryzen 5 7500F (3.7GHz, 65W, 32MB, 6, B2)",
           "pcb_version": "all",
           "bios_version": "all",
