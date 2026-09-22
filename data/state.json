@@ -13,6 +13,17 @@
       },
       "bios": [
         {
+          "key": "1103",
+          "version": "1103",
+          "title": "",
+          "release_date": "2026/09/22",
+          "beta": false,
+          "file_size": "39.42 MB",
+          "description": "1.Update to AGESA ComboAM5 PI 1.3.0.1d.\n2.Enhanced memory performance, system stability, and compatibility with CXMT memory chips for improved low-latency operation.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5755.CAP) using BIOSRenamer.",
+          "sha256": "092C691A67B80BCE072B2DFDDCC57C6AFCD195DEA3EEA8AECA2BDBADE7792E05",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-X870E-E-GAMING-WIFI7-NEO-ASUS-1103.ZIP"
+        },
+        {
           "key": "1002",
           "version": "1002",
           "title": "",
