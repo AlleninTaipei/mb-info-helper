@@ -418,6 +418,17 @@
       },
       "bios": [
         {
+          "key": "3401",
+          "version": "3401",
+          "title": "",
+          "release_date": "2026/09/23",
+          "beta": false,
+          "file_size": "15.73 MB",
+          "description": "1. Enhanced memory performance, system stability, and compatibility with CXMT memory chips for improved low-latency operation.\nUpdating this BIOS will simultaneously update the corresponding Intel ME to version 19.0.11.2289v0.4.The ME version will remain updated even if you roll back to an older BIOS later. We recommend using EZ Flash to update the BIOS, as it supports ZIP format and auto-updates the ME. If using USB BIOS FlashBack, ensure the ME version matches the BIOS version and rename the BIOS file with BIOSRenamer before proceeding.\nBefore running the USB BIOS Flashback tool, please rename the BIOS file (A5583.CAP) using BIOSRenamer.",
+          "sha256": "7A0B28345EC4F567E210CD07A67DE54ECCF3C8F75E16D848E4F467BD3CC3EF35",
+          "download_path": "/pub/ASUS/mb/BIOS/ROG-STRIX-Z890-A-GAMING-WIFI-ASUS-3401.ZIP"
+        },
+        {
           "key": "3305",
           "version": "3305",
           "title": "",
